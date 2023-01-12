@@ -8,14 +8,22 @@ import java.util.Scanner;
 public class GradeConverter {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
+        int a;
         System.out.print("점수를 입력하시오 : ");
-        while(!sc.hasNextInt())
+        while(true)
         {
-            sc.next();
+            if (sc.hasNextInt())
+            {
+                a = sc.nextInt();
+                if (a >= 0 && a <= 100)
+                    break;
+            }
+            else
+                sc.next();
             System.err.print("잘못된 입력값입니다. 다시 입력해주세요:");
         }
         char credit;
-        int score = sc.nextInt() / 10;
+        int score = a / 10;
         if (score >= 0 && score <= 10) {
             if (score == 10 || score == 9)
                 credit = 'A';
